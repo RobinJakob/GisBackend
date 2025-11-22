@@ -1,0 +1,175 @@
+Stand laufende Aktualisierung
+Koordinatensystem: UTM32 / EPSG-Code 25832
+Höhenbezug: Höhen über Normalhöhen-Null (NHN) im DHHN2016 (Höhenstatus 170)
+Bildebenen des Grünflächenkatasters: 700001000-700002091
+
+
+ 700001000 GRF: Pflegegebiet .........................................
+ 700001001 GRF: Pflegegebiet Übersicht
+ 700001003 GRF: Pflegegebiet Übersicht (Symbol)
+ 700001004 GRF: Pflegegebiet Objektnummer
+ 700001005 GRF: Pflegegebiet (Text)
+ 700001006 GRF: Pflegegebiet Übersicht (Text)
+ 700001010 GRF: Rasen
+ 700001020 GRF: Wiese 1-4 Schn
+ 700001025 GRF: Gebrauchsrasen 6-10 Schn
+ 700001030 GRF: Gebrauchsrasen 10-20 Schn
+ 700001035 GRF: Zierrasen 20-30 Schn
+ 700001040 GRF: Sport/Spielrasen 25-40 Schn
+ 700001045 GRF: Blumenwiese (mehrjährig)
+ 700001050 GRF: Straßenbegleitgrün (Fläche)
+ 700001051 GRF: Straßenbegleitgrün (Linie)
+ 700001055 GRF: Bankettrasen
+ 700001110 GRF: Strauch/Bodendecker (kleiner 1m)
+ 700001115 GRF: Zier- und Decksträucher (größer 1m)
+ 700001120 GRF: Rosen
+ 700001125 GRF: Wechselbepflanzung
+ 700001130 GRF: Stauden
+ 700001135 GRF: Wald
+ 700001140 GRF: Sukzession
+ 700001141 GRF: Mager-Trockenstandorte
+ 700001142 GRF: Ufersäume
+ 700001143 GRF: Feucht- u. Nasswiesen
+ 700001144 GRF: Feldgehölze
+ 700001145 GRF: Landwirtschaft
+ 700001147 GRF: Heide
+ 700001150 GRF: Privatfläche
+ 700001155 GRF: Patenschaftsfläche
+ 700001160 GRF: Blumen (1-jährig)
+ 700001165 GRF: Geophyten
+ 700001170 GRF: Grabflächen
+ 700001171 GRF: Urnenerdflächen
+ 700001172 GRF: Urnengemeinschaftsfeld
+ 700001173 GRF: Kolumbarien
+ 700001174 GRF: Sonstige Vegetation
+ 700001175 GRF: Außenanlagen
+ 700001240 GRF: Hecken (Fläche)
+ 700001241 GRF: Hecke (Höhe < 1.5m)
+ 700001242 GRF: Hecke (Höhe > 1.5m)
+ 700001310 GRF: wassergebundene Flächen
+ 700001311 GRF: Rasenpflaster
+ 700001313 GRF: Kunstrasen
+ 700001315 GRF: Pflaster
+ 700001317 GRF: Sand,sonstiger
+ 700001320 GRF: Platten
+ 700001323 GRF: Holzbelag
+ 700001325 GRF: Beton/Bitumen
+ 700001327 GRF: Fallschutz,Riesel
+ 700001330 GRF: Kunststoff
+ 700001333 GRF: Kunststoff,Ortseinbau
+ 700001335 GRF: Sandflächen
+ 700001336 GRF: Kies
+ 700001337 GRF: Quarzsand
+ 700001340 GRF: Fallschutz
+ 700001343 GRF: Fallschutz,Kunststoff,Ortseinbau
+ 700001345 GRF: Rindenmulch
+ 700001347 GRF: Rindenschrot
+ 700001350 GRF: Mauer
+ 700001352 GRF: Sonstiger Belag
+ 700001355 GRF: Treppen
+ 700001356 GRF: Splittdecke
+ 700001357 GRF: Rollierung/Traufstreifen
+ 700001358 GRF: Schotterrasen
+ 700001360 GRF: Brücke
+ 700001365 GRF: Tennenbeläge
+ 700001395 GRF: Hackschnitzel
+ 700001410 GRF: Teiche,Seen
+ 700001415 GRF: Brunnen
+ 700001416 GRF: Brunnen InvNr.
+ 700001420 GRF: Bäche
+ 700001430 GRF: Gräben
+ 700001440 GRF: Merkmal Wasserfläche
+ 700001450 GRF: Betriebshof
+ 700001455 GRF: Toilette
+ 700001460 GRF: Sonst. Gebäude
+ 700001490 GRF: Gebäudefläche
+ 700001510 GRF: Zaun bis 1m
+ 700001515 GRF: Zaun bis 2m
+ 700001530 GRF: Ballfangzaun
+ 700001535 GRF: Barrieren,Geländer
+ 700001543 GRF: Baumrost
+ 700001544 GRF: Baumrost InvNr.
+ 700001545 GRF: Poller
+ 700001546 GRF: Poller InvNr.
+ 700001547 GRF: Kübel/Pflanzgefäß
+ 700001548 GRF: Kübel/Pflanzgefäß InvNr.
+ 700001550 GRF: Baumgitter
+ 700001551 GRF: Baumgitter InvNr.
+ 700001625 GRF: Bank
+ 700001626 GRF: Bank InvNr.
+ 700001628 GRF: Gerätehaus
+ 700001629 GRF: Gerätehaus InvNr.
+ 700001630 GRF: Abfallbehälter/Schrank
+ 700001631 GRF: Abfallbehälter InvNr.
+ 700001632 GRF: Schutzhütte
+ 700001633 GRF: Schutzhütte InvNr.
+ 700001635 GRF: Skulptur
+ 700001636 GRF: Skulptur InvNr.
+ 700001640 GRF: Sonnenschutz
+ 700001641 GRF: Sonnenschutz InvNr.
+ 700001650 GRF: Beleuchtung
+ 700001655 GRF: Sonst. Mobiliar
+ 700001656 GRF: Sonst. Mobiliar InvNr.
+ 700001660 GRF: Tisch
+ 700001661 GRF: Tisch InvNr.
+ 700001665 GRF: Fahrradständer
+ 700001666 GRF: Fahrradständer InvNr.
+ 700001670 GRF: Beschilderung
+ 700001671 GRF: Beschilderung InvNr.
+ 700001675 GRF: Kotbeutelständer
+ 700001676 GRF: Kotbeutelständer InvNr.
+ 700001710 GRF: Schaukel
+ 700001711 GRF: Schaukel InvNr.
+ 700001713 GRF: Kombigerät
+ 700001714 GRF: Kombigerät InvNr.
+ 700001715 GRF: Rutsche
+ 700001716 GRF: Rutsche InvNr.
+ 700001718 GRF: Karussell
+ 700001719 GRF: Karussell InvNr.
+ 700001720 GRF: Sandkasten
+ 700001721 GRF: Sandkasten InvNr.
+ 700001723 GRF: Seilbahn
+ 700001724 GRF: Seilbahn InvNr.
+ 700001725 GRF: Spielhaus
+ 700001726 GRF: Spielhaus InvNr.
+ 700001730 GRF: Kletterbaum
+ 700001731 GRF: Kletterbaum InvNr.
+ 700001735 GRF: Federspielgerät
+ 700001736 GRF: Federspielgerät InvNr.
+ 700001740 GRF: Turngerät
+ 700001741 GRF: Turngerät InvNr.
+ 700001743 GRF: Balanciergerät
+ 700001744 GRF: Balanciergerät InvNr.
+ 700001745 GRF: Wasserspiel/anlage
+ 700001746 GRF: Wasserspiel/anlage InvNr.
+ 700001750 GRF: Wippe
+ 700001751 GRF: Wippe InvNr.
+ 700001755 GRF: Sonst. Spielgerät
+ 700001756 GRF: Sonst. Spielgerät InvNr.
+ 700001760 GRF: Allg. Sportgerät
+ 700001761 GRF: Allg. Sportgerät InvNr.
+ 700001762 GRF: Balltore
+ 700001763 GRF: Balltore InvNr.
+ 700001764 GRF: Skateanlage
+ 700001765 GRF: Skateanlage InvNr.
+ 700001766 GRF: Basketball
+ 700001767 GRF: Basketball InvNr.
+ 700001768 GRF: Tischtennis
+ 700001769 GRF: Tischtennis InvNr.
+ 700001850 GRF: Ranker/Wandbegrünung
+ 700001851 GRF: Formgehölz
+ 700001853 GRF: Formgehölz(Fläche)
+ 700001855 GRF: Solitärsträucher
+ 700002010 GRF: Einfassung: Stein
+ 700002015 GRF: Einfassung: Metall
+ 700002020 GRF: Einfassung: Holz
+ 700002025 GRF: Einfassung: Kunststoff
+ 700002030 GRF: Lärmschutzwand
+ 700002035 GRF: Sonstige Einfassung
+ 700002040 GRF: Extensivflächen
+ 700002050 GRF: Grüninsel
+ 700002060 GRF: Böschungen
+ 700002070 GRF: Palisaden
+ 700002080 GRF: Findlinge
+ 700002090 GRF: Baumstamm
+ 700002091 GRF: Baumstamm(Fläche)

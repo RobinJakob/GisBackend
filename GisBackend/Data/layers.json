@@ -1,0 +1,212 @@
+[
+  {
+    "filenamePattern": "Baumkataster",
+    "type": "Tree",
+    "bufferMeters": 0.0,
+    "description": "Bestandsbaum"
+  },
+
+  {
+    "filenamePattern": "Brandschutzzone_linienhaft",
+    "type": "Obstacle",
+    "category": "FireLane",
+    "bufferMeters": 3.0,
+    "description": "Feuerwehrzufahrt"
+  },
+  {
+    "filenamePattern": "Brandschutzzonen_F",
+    "type": "Obstacle",
+    "category": "FireLane",
+    "bufferMeters": 0.0,
+    "description": "Feuerwehr-Aufstellfläche"
+  },
+
+  {
+    "filenamePattern": "gebaeudeBauwerke",
+    "type": "Obstacle",
+    "category": "Building",
+    "bufferMeters": 2.0,
+    "description": "Gebäude (2m Abstand)"
+  },
+  {
+    "filenamePattern": "Grabflächen",
+    "type": "Obstacle",
+    "category": "Grave",
+    "bufferMeters": 0.5,
+    "description": "Grabfläche"
+  },
+
+  {
+    "filenamePattern": "Strassenachse",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 4.5,
+    "description": "Straßenverkehr (Achse)"
+  },
+  {
+    "filenamePattern": "Strassenknoten",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 12.0,
+    "description": "Kreuzungsbereich"
+  },
+  {
+    "filenamePattern": "Strassenflaechen_Einzel",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 0.0,
+    "description": "Fahrbahn (Versiegelt)"
+  },
+
+  {
+    "filenamePattern": "Poller_Ampel",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 1.0,
+    "description": "Ampel/Poller"
+  },
+  {
+    "filenamePattern": "Bank_Symbol",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 1.5,
+    "description": "Parkbank"
+  },
+  {
+    "filenamePattern": "Papierkorb",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 0.8,
+    "description": "Mülleimer"
+  },
+  {
+    "filenamePattern": "MOBILIAR_Sonstiges",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 1.0,
+    "description": "Stadtmobiliar"
+  },
+  {
+    "filenamePattern": "Einlaeufe",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 1.5,
+    "description": "Kanal/Gulli (Wurzelschutz)"
+  },
+  {
+    "filenamePattern": "Verkehrszeichen",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 1.0,
+    "description": "Verkehrsschild"
+  },
+  {
+    "filenamePattern": "Schildermast",
+    "type": "Obstacle",
+    "category": "Infrastructure",
+    "bufferMeters": 1.0,
+    "description": "Mast"
+  },
+
+  {
+    "filenamePattern": "Wald",
+    "type": "Obstacle",
+    "category": "Forest",
+    "bufferMeters": 5.0,
+    "description": "Wald"
+  },
+  {
+    "filenamePattern": "Feldgehölze",
+    "type": "Obstacle",
+    "category": "Forest",
+    "bufferMeters": 2.0,
+    "description": "Dichtes Gehölz"
+  },
+  {
+    "filenamePattern": "Hecken",
+    "type": "Obstacle",
+    "category": "Forest",
+    "bufferMeters": 1.0,
+    "description": "Hecke"
+  },
+
+  {
+    "filenamePattern": "Rasenpflaster",
+    "type": "Obstacle",
+    "category": "SemiSealed",
+    "bufferMeters": 0.0,
+    "description": "Rasenpflaster (Potential bei Entsiegelung)"
+  },
+  {
+    "filenamePattern": "wassergebundene",
+    "type": "Obstacle",
+    "category": "SemiSealed",
+    "bufferMeters": 0.0,
+    "description": "Schotterweg"
+  },
+  {
+    "filenamePattern": "Schotterrasen",
+    "type": "Obstacle",
+    "category": "SemiSealed",
+    "bufferMeters": 0.0,
+    "description": "Schotterrasen"
+  },
+
+  {
+    "filenamePattern": "Patenschaft",
+    "type": "Obstacle",
+    "category": "Restricted",
+    "bufferMeters": 0.0,
+    "description": "Pflanzbeet (Belegt)"
+  },
+  {
+    "filenamePattern": "Sonstige Vegetation",
+    "type": "Obstacle",
+    "category": "Restricted",
+    "bufferMeters": 0.0,
+    "description": "Sonstiges Grün"
+  },
+  {
+    "filenamePattern": "Rosen",
+    "type": "Obstacle",
+    "category": "Restricted",
+    "bufferMeters": 0.0,
+    "description": "Rosenbeet"
+  },
+  {
+    "filenamePattern": "BEETE",
+    "type": "Obstacle",
+    "category": "Restricted",
+    "bufferMeters": 0.0,
+    "description": "Beet"
+  },
+  {
+    "filenamePattern": "Strauch",
+    "type": "Obstacle",
+    "category": "Restricted",
+    "bufferMeters": 0.0,
+    "description": "Sträucher"
+  },
+  {
+    "filenamePattern": "Sport_Spielrasen",
+    "type": "Obstacle",
+    "category": "SportField",
+    "bufferMeters": 0.0,
+    "description": "Sportplatz"
+  },
+
+  {
+    "filenamePattern": "RASEN",
+    "type": "PotentialArea",
+    "category": "PotentialPlanting",
+    "bufferMeters": 0.0,
+    "description": "Wiese"
+  },
+  {
+    "filenamePattern": "kleiner_1m",
+    "type": "PotentialArea",
+    "category": "PotentialPlanting",
+    "bufferMeters": 0.0,
+    "description": "Bodendecker"
+  }
+]

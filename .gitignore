@@ -1,0 +1,23 @@
+# Visual Studio Temporäre Dateien
+.vs/
+.vscode/
+
+# Kompilierte Dateien (wichtig!)
+bin/
+obj/
+
+# Benutzer-spezifische Dateien
+*.user
+*.suo
+
+# Shape-Dateien
+*.zip
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+
+# Andere Systemdateien
+Thumbs.db
+.DS_Store

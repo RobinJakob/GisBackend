@@ -1,0 +1,6 @@
+@GisBackend_HostAddress = http://localhost:5129
+
+GET {{GisBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
