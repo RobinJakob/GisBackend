@@ -10,15 +10,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization; // WICHTIG für JsonNumberHandling
 using System.IO.Compression;
-using System.Threading.Tasks; // Wichtig für Async
+using System.Threading.Tasks;
 using System;
 
 namespace GisBackendApi.Services
 {
     public class GisProcessingService
     {
-        // ... (Felder und Konstruktor bleiben gleich) ...
         private readonly GeometryFactory _geometryFactory;
         private readonly ICoordinateTransformation _utmToWgs84;
         private readonly CoordinateTransformationFactory _ctFactory;
@@ -40,38 +40,35 @@ namespace GisBackendApi.Services
             _ctFactory = new CoordinateTransformationFactory();
             _csFactory = new CoordinateSystemFactory();
 
+            // UTM 32N Definition
             string wktUtm32 = "PROJCS[\"ETRS89_UTM_Zone_32\",GEOGCS[\"GCS_ETRS89\",DATUM[\"D_ETRS89\",SPHEROID[\"GRS_1980\",6378137,298.257222101]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.0174532925199432955]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000],PARAMETER[\"False_Northing\",0],PARAMETER[\"Central_Meridian\",9],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0],UNIT[\"Meter\",1],AUTHORITY[\"EPSG\",25832]]";
             var sourceCs = _csFactory.CreateFromWkt(wktUtm32);
             var targetCs = GeographicCoordinateSystem.WGS84;
             _utmToWgs84 = _ctFactory.CreateFromCoordinateSystems(sourceCs, targetCs);
         }
 
-        // --- DIESE METHODE WURDE HINZUGEFÜGT ---
         public async Task<List<string>> GenerateStaticFiles(string dataPath, string webRootPath)
         {
             var generatedFiles = new List<string>();
             string outputFolder = Path.Combine(webRootPath, "geojson");
 
-            // Verzeichnis erstellen
             if (!Directory.Exists(outputFolder)) Directory.CreateDirectory(outputFolder);
 
-            // Daten einmalig laden (passiert im selben Thread wie der BackgroundService)
             EnsureDataLoaded(dataPath);
 
-            // JSON Optionen für kompakte Dateien
+            // --- FIX: Erlaube NaN und Infinity im JSON, um Abstürze zu verhindern ---
             var jsonOptions = new JsonSerializerOptions
             {
                 WriteIndented = false,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
             };
+            // ------------------------------------------------------------------------
 
-            // Für jede Kategorie eine Datei erstellen
             foreach (ZoneCategory category in Enum.GetValues(typeof(ZoneCategory)))
             {
-                // Layer abrufen (hier findet die Berechnung statt, wenn nötig)
                 var zones = GetLayerByCategory(dataPath, category);
-
-                if (zones == null || !zones.Any()) continue; // Leere Layer nicht schreiben
+                if (zones == null || !zones.Any()) continue;
 
                 var geoJson = new
                 {
@@ -91,7 +88,6 @@ namespace GisBackendApi.Services
                 generatedFiles.Add(fileName);
             }
 
-            // Heatmap separat
             var heatmap = GetHeatmap(dataPath);
             if (heatmap != null && heatmap.Any())
             {
@@ -113,7 +109,6 @@ namespace GisBackendApi.Services
 
             return generatedFiles;
         }
-        // ----------------------------------------
 
         public List<AnalyzedZone> GetLayerByCategory(string dataPath, ZoneCategory category)
         {
@@ -216,9 +211,13 @@ namespace GisBackendApi.Services
 
         private void AddToCache(Geometry geo, ZoneCategory cat, string desc)
         {
+            var transformed = TransformToWgs84(geo);
+            // Wenn Transformation fehlgeschlagen ist (leere Geometrie), nicht cachen
+            if (transformed == null || transformed.IsEmpty) return;
+
             _allZonesCache.Add(new AnalyzedZone
             {
-                Geometry = TransformToWgs84(geo),
+                Geometry = transformed,
                 Category = cat,
                 Description = desc,
                 ColorCode = GetColor(cat)
@@ -258,13 +257,17 @@ namespace GisBackendApi.Services
                         var areaPart = potentialArea.GetGeometryN(i);
                         if (areaPart.Area > 15.0)
                         {
-                            results.Add(new AnalyzedZone
+                            var transformed = TransformToWgs84(areaPart);
+                            if (transformed != null && !transformed.IsEmpty)
                             {
-                                Geometry = TransformToWgs84(areaPart),
-                                Category = ZoneCategory.PotentialPlanting,
-                                Description = $"Möglicher Standort ({areaPart.Area:F0} m²)",
-                                ColorCode = "#00FF00"
-                            });
+                                results.Add(new AnalyzedZone
+                                {
+                                    Geometry = transformed,
+                                    Category = ZoneCategory.PotentialPlanting,
+                                    Description = $"Möglicher Standort ({areaPart.Area:F0} m²)",
+                                    ColorCode = "#00FF00"
+                                });
+                            }
                         }
                     }
                 }
@@ -286,13 +289,33 @@ namespace GisBackendApi.Services
             }
         }
 
+        // --- FIX: Robustere Transformation ---
         private Geometry TransformToWgs84(Geometry geom)
         {
             if (!geom.IsValid) geom = geom.Buffer(0);
             var res = geom.Copy();
-            res.Apply(new MathTransformFilter(_utmToWgs84.MathTransform));
-            return res;
+            try
+            {
+                res.Apply(new MathTransformFilter(_utmToWgs84.MathTransform));
+                // Prüfen ob Koordinaten valide sind (kein NaN)
+                if (HasInvalidCoordinates(res)) return GeometryFactory.Default.CreateGeometryCollection(null);
+                return res;
+            }
+            catch
+            {
+                return GeometryFactory.Default.CreateGeometryCollection(null);
+            }
         }
+
+        private bool HasInvalidCoordinates(Geometry g)
+        {
+            foreach (var c in g.Coordinates)
+            {
+                if (double.IsNaN(c.X) || double.IsNaN(c.Y) || double.IsInfinity(c.X) || double.IsInfinity(c.Y)) return true;
+            }
+            return false;
+        }
+        // -------------------------------------
 
         private string GetColor(ZoneCategory cat)
         {
@@ -333,7 +356,13 @@ namespace GisBackendApi.Services
                     int count = 0;
                     foreach (Geometry candidate in candidates) if (cellPoly.Intersects(candidate)) count++;
                     double score = count > 0 ? (1.0 / (1.0 + count)) : 1.0;
-                    if (score > 0.1) cells.Add(new HeatmapCell { Geometry = TransformToWgs84(cellPoly), Score = score, TreeCount = count, ColorHex = GetHeatmapColor(score) });
+
+                    // Transformation auch hier absichern
+                    var transGeo = TransformToWgs84(cellPoly);
+                    if (score > 0.1 && !transGeo.IsEmpty)
+                    {
+                        cells.Add(new HeatmapCell { Geometry = transGeo, Score = score, TreeCount = count, ColorHex = GetHeatmapColor(score) });
+                    }
                 }
             }
             return cells;
@@ -354,7 +383,7 @@ namespace GisBackendApi.Services
             public bool GeometryChanged => true;
             public void Filter(CoordinateSequence seq, int i)
             {
-                double[] res = _transform.Transform(new[] { seq.GetX(i), seq.GetY(i) });
+                var res = _transform.Transform(new[] { seq.GetX(i), seq.GetY(i) });
                 seq.SetX(i, res[0]);
                 seq.SetY(i, res[1]);
             }
